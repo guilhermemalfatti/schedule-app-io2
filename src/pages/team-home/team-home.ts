@@ -10,10 +10,12 @@ import {StandingsPage, TeamDetailPage} from '../pages'
 })
 export class TeamHomePage {
 
+  team: any;
   teamDetailtab = TeamDetailPage;
   standingTab = StandingsPage;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.team = this.navParams.data;
   }
 
   ionViewDidLoad() {
