@@ -3,7 +3,7 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { MyTeamsPage, TournamentsPage, GamePage } from '../pages/pages';
+import { MyTeamsPage, TournamentsPage} from '../pages/pages';
 //import { MyTeamPage } from './pages/pages';
 
 @Component({

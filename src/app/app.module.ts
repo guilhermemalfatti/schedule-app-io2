@@ -3,9 +3,9 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
-import { MyTeamsPage } from '../pages/my-teams/my-teams.page';
-//import {TournamentsPage} from '../pages/tournaments/tournaments';
-import { TournamentsPage } from '../pages/pages';
+
+
+import {TeamsPage, TournamentsPage, MyTeamsPage, TeamDetailPage } from '../pages/pages';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -14,7 +14,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   declarations: [
     MyApp,
     MyTeamsPage,
-    TournamentsPage
+    TournamentsPage,
+    TeamDetailPage,
+    TeamsPage
   ],
   imports: [
     BrowserModule,
@@ -24,7 +26,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   entryComponents: [
     MyApp,
     MyTeamsPage,
-    TournamentsPage
+    TournamentsPage,
+    TeamDetailPage,
+    TeamsPage
   ],
   providers: [
     StatusBar,
