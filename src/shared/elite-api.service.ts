@@ -27,4 +27,8 @@ export class EliteApi {
             return this.currentTournament;
         });
     }
+
+    getCurrentToruney(){
+        return this.currentTournament;
+    }
 }

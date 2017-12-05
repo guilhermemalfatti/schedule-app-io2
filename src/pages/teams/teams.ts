@@ -34,8 +34,10 @@ export class TeamsPage {
   }
 
   itemTapped(event, team){
-    console.log(team);
+    console.log("[APP] team tapped: " + team.name);
+    //console.log(team);
     this.navCtrl.push(TeamHomePage, team);
+
   }
 
 }
