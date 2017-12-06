@@ -6,7 +6,7 @@ import { HttpModule } from '@angular/http';
 import { MyApp } from './app.component';
 
 
-import {TeamsPage, TournamentsPage, MyTeamsPage, TeamDetailPage, StandingsPage, TeamHomePage } from '../pages/pages';
+import {TeamsPage, TournamentsPage, MyTeamsPage, TeamDetailPage, StandingsPage, TeamHomePage, GamePage} from '../pages/pages';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -19,7 +19,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     TeamDetailPage,
     TeamsPage,
     TeamHomePage,
-    StandingsPage
+    StandingsPage,
+    GamePage
   ],
   imports: [
     BrowserModule,
@@ -34,7 +35,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     TeamDetailPage,
     TeamsPage,
     TeamHomePage,
-    StandingsPage
+    StandingsPage,
+    GamePage
   ],
   providers: [
     StatusBar,

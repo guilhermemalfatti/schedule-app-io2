@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {MyTeamsPage} from '../pages'
+import {GamePage} from '../pages'
 
 import * as _ from 'lodash';
 
@@ -24,7 +24,7 @@ export class TeamDetailPage {
 
   ionViewDidLoad() {
     this.team = this.navParams.data;
-    this.tourneyData = this.eliteAPI.getCurrentToruney();
+    this.tourneyData = this.eliteAPI.getCurrentTourney();
 
     this.games = _.chain(this.tourneyData.games)
                   .filter(g => g.team1Id === this.team.id || g.team2Id === this.team.id)
@@ -54,6 +54,13 @@ export class TeamDetailPage {
     }else{
       return "";
     }
+  }
+
+
+  gameClicked($event, game){
+    let sourceGame = this.tourneyData.games.find(g => g.id === game.gameId);
+    this.navCtrl.parent.parent.push(GamePage, sourceGame);
+
   }
 
   /* goHome(){

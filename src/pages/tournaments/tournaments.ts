@@ -1,15 +1,9 @@
 import { Component } from '@angular/core';
-import { LoadingController IonicPage, NavController, NavParams } from 'ionic-angular';
+import { LoadingController, IonicPage, NavController } from 'ionic-angular';
 
 import {TeamsPage} from '../pages'
 import {EliteApi} from '../../shared/shared'
 
-/**
- * Generated class for the TournamentsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
