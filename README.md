@@ -2,7 +2,7 @@
 
 This code focus explore the exciting new Ionic 2 framework and how to build mobile apps using Angular 2 and TypeScript.
 
-All this code was based the course **"Building Mobile Apps with Ionic 2, Angular 2, and TypeScript"**.
+All this code has based on the course **"Building Mobile Apps with Ionic 2, Angular 2, and TypeScript"**.
 
 by 
 > [Steve Michelotti](http://stevemichelotti.com/).
