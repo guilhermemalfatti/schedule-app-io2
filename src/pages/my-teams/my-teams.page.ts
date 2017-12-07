@@ -26,9 +26,7 @@ export class MyTeamsPage {
 
   constructor(private nav: NavController,
               private eliteAPI: EliteApi,
-              private loadingCtrl: LoadingController) {
-
-  }
+              private loadingCtrl: LoadingController) { }
 
   favoriteTapped(event, favorite){
     let loader = this.loadingCtrl.create({
