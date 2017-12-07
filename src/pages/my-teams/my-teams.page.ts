@@ -7,6 +7,7 @@ import {EliteApi} from '../../shared/shared';
 
 
 @Component({
+  selector: 'my-team',
   templateUrl: 'my-teams.page.html'
 })
 export class MyTeamsPage {
