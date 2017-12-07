@@ -15,6 +15,7 @@ export class TeamDetailPage {
 
   team: any;
   games: any[];
+  teamStanding: any;
   private tourneyData: any;
   constructor(public  navCtrl: NavController, 
               public  navParams: NavParams,
@@ -43,6 +44,9 @@ export class TeamDetailPage {
                     });
                   })
                   .value();
+    this.teamStanding = _.find(this.tourneyData.standings, {'teamId': this.team.id});
+    
+    console.log('[APP] games: ', this.games);
   }
 
   getScoreDisplay(isTeam1, team1Score, team2Score){
