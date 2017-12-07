@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {LoadingController, IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import {TeamHomePage} from '../pages';
 import {EliteApi} from '../../shared/shared';
+
+import * as _ from 'lodash';
 
 @IonicPage()
 @Component({
@@ -17,19 +19,36 @@ export class TeamsPage {
     {id: 1, name: 'DC Thunder'}
   ]; */
 
+  private allteams: any;
+  private allteamsDivisions; any;
   teams = [];
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
-              private eliteAPI: EliteApi) {}
+              private eliteAPI: EliteApi,
+              private loaderCtrl: LoadingController) {}
 
   ionViewDidLoad() {
     let selectedTourney =this.navParams.data;
 
     console.log('[APP] tourney: ' + selectedTourney.id);
 
-    this.eliteAPI.getTournamentData(selectedTourney.id).subscribe(data => {
-      this.teams = data.teams;
+    let  loader = this.loaderCtrl.create({
+      content: "Getting data..."
+    });
+    loader.present().then(() =>{
+      this.eliteAPI.getTournamentData(selectedTourney.id).subscribe(data => {
+        this.allteams = data.teams;
+        this.allteamsDivisions = _.chain(data.teams)
+        .groupBy('division')
+        .toPairs()
+        .map(item => _.zipObject(['divisionName', 'divisionTeams'], item))
+        .value();
+  
+        this.teams = this.allteamsDivisions;
+        console.log('[APP] division teams', this.teams);
+        loader.dismiss();
+      });    
     });
   }
 
