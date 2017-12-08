@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {GamePage} from '../pages'
 
 import * as _ from 'lodash';
+import * as moment from 'moment';
 
 import {EliteApi} from '../../shared/shared'
 
@@ -13,6 +14,8 @@ import {EliteApi} from '../../shared/shared'
 })
 export class TeamDetailPage {
 
+  allGames: any[];
+  dateFilter: string;
   team: any;
   games: any[];
   teamStanding: any;
@@ -44,6 +47,7 @@ export class TeamDetailPage {
                     });
                   })
                   .value();
+    this.allGames = this.games;
     this.teamStanding = _.find(this.tourneyData.standings, {'teamId': this.team.id});
     
     console.log('[APP] games: ', this.games);
@@ -72,5 +76,9 @@ export class TeamDetailPage {
     //this.navCtrl.popToRoot();
     this.navCtrl.parent.parent.popToRoot();
   } */
+
+  dataChamnge(){
+    this.games = _.filter(this.allGames, g => moment(g.time).isSame(this.dateFilter, 'day'));
+  }
 
 }
