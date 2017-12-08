@@ -83,8 +83,15 @@ export class TeamDetailPage {
       this.games = _.filter(this.allGames, g => moment(g.time).isSame(this.dateFilter, 'day'));
     }else{
       this.games = this.allGames;
-    }
-    
+    }    
+  }
+
+  getScoreDisplayBadgeClass(game){
+    return game.scoreDisplay.indexOf('W:') === 0 ? 'primary' : 'danger'
+  }
+
+  getScoreWorL(game){
+    return game.scoreDisplay ? game.scoreDisplay[0] : '';
   }
 
 }
