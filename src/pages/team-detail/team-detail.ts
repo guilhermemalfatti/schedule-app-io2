@@ -14,6 +14,7 @@ import {EliteApi} from '../../shared/shared'
 })
 export class TeamDetailPage {
 
+  useDateFilter = false;
   allGames: any[];
   dateFilter: string;
   team: any;
@@ -78,7 +79,12 @@ export class TeamDetailPage {
   } */
 
   dataChamnge(){
-    this.games = _.filter(this.allGames, g => moment(g.time).isSame(this.dateFilter, 'day'));
+    if(this.useDateFilter){
+      this.games = _.filter(this.allGames, g => moment(g.time).isSame(this.dateFilter, 'day'));
+    }else{
+      this.games = this.allGames;
+    }
+    
   }
 
 }

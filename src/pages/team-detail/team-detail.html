@@ -24,8 +24,10 @@
       </ion-row>
       <ion-item>
         <ion-label>Date Filter:</ion-label>
+        <ion-toggle [(ngModel)]="useDateFilter" (ionChange)="dataChamnge()"></ion-toggle>
         <ion-datetime displayFormat="D/M/YYYY" pickerFormat-="D/M/YYYY" 
-        [(ngModel)]="dateFilter" (ionChange)="dataChamnge()"></ion-datetime>
+        [(ngModel)]="dateFilter" (ionChange)="dataChamnge()"
+        [(disabled)]="!useDateFilter"></ion-datetime>
       </ion-item>
     </ion-card-content>
   </ion-card>
