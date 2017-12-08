@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {AlertController, IonicPage, NavController, NavParams } from 'ionic-angular';
+import {ToastController, AlertController, IonicPage, NavController, NavParams } from 'ionic-angular';
 import {GamePage} from '../pages'
 
 import * as _ from 'lodash';
@@ -25,7 +25,8 @@ export class TeamDetailPage {
   constructor(public  navCtrl: NavController, 
               public  navParams: NavParams,
               private eliteAPI: EliteApi,
-              private alert: AlertController) {
+              private alertCtrl: AlertController,
+              private toastCtrl: ToastController) {
     
   }
 
@@ -98,7 +99,7 @@ export class TeamDetailPage {
 
   toggleFollow(){
     if(this.isFollowing){
-      let confirm = this.alert.create({
+      let confirm = this.alertCtrl.create({
         title: 'Unfollow',
         message: 'Are you sure you want to unfollow?',
         buttons: [
@@ -107,6 +108,13 @@ export class TeamDetailPage {
             handler:() => {
               this.isFollowing = false;
               //TODO, persit data
+
+              let toast = this.toastCtrl.create({
+                message: 'You have unfollowed this team.',
+                duration: 2000,
+                position: 'bottom'
+              });
+              toast.present();
             }
           },
           {
