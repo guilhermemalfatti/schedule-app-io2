@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {AlertController, IonicPage, NavController, NavParams } from 'ionic-angular';
 import {GamePage} from '../pages'
 
 import * as _ from 'lodash';
@@ -20,10 +20,12 @@ export class TeamDetailPage {
   team: any;
   games: any[];
   teamStanding: any;
+  isFollowing = false;
   private tourneyData: any;
   constructor(public  navCtrl: NavController, 
               public  navParams: NavParams,
-              private eliteAPI: EliteApi) {
+              private eliteAPI: EliteApi,
+              private alert: AlertController) {
     
   }
 
@@ -92,6 +94,32 @@ export class TeamDetailPage {
 
   getScoreWorL(game){
     return game.scoreDisplay ? game.scoreDisplay[0] : '';
+  }
+
+  toggleFollow(){
+    if(this.isFollowing){
+      let confirm = this.alert.create({
+        title: 'Unfollow',
+        message: 'Are you sure you want to unfollow?',
+        buttons: [
+          {
+            text: 'yes',
+            handler:() => {
+              this.isFollowing = false;
+              //TODO, persit data
+            }
+          },
+          {
+            text: 'No'
+          }
+        ]
+      });
+      confirm.present();
+
+    }else{
+      this.isFollowing = true;
+      //TODO, persist data
+    }
   }
 
 }
