@@ -3,7 +3,7 @@ import {LoadingController, NavController } from 'ionic-angular';
 
 import {TeamHomePage, TournamentsPage} from '../pages';
 
-import {EliteApi} from '../../shared/shared';
+import {EliteApi, UserSettings} from '../../shared/shared';
 
 
 @Component({
@@ -12,7 +12,8 @@ import {EliteApi} from '../../shared/shared';
 })
 export class MyTeamsPage {
 
-  favorites = [
+  favorites: any;
+  /* favorites = [
        {
            team: { id: 6182, name: 'HC Elite 7th', coach: 'Michelotti' },
            tournamentId: '89e13aa2-ba6d-4f55-9cc2-61eba6172c63',
@@ -23,11 +24,12 @@ export class MyTeamsPage {
            tournamentId: '98c6857e-b0d1-4295-b89e-2d95a45437f2',
            tournamentName: 'Holiday Hoops Challenge'
        }
-   ];
+   ]; */
 
   constructor(private nav: NavController,
               private eliteAPI: EliteApi,
-              private loadingCtrl: LoadingController) { }
+              private loadingCtrl: LoadingController,
+              private userSettings: UserSettings) { }
 
   favoriteTapped(event, favorite){
     let loader = this.loadingCtrl.create({
@@ -41,5 +43,11 @@ export class MyTeamsPage {
 
   gotToTorunament(){
     this.nav.push(TournamentsPage);
+  }
+
+  ionViewDidEnter(){
+    this.userSettings.getallFavorites().then(favs => {
+      this.favorites = favs;
+    });
   }
 }

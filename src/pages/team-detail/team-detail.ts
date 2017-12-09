@@ -5,7 +5,7 @@ import {GamePage} from '../pages'
 import * as _ from 'lodash';
 import * as moment from 'moment';
 
-import {EliteApi} from '../../shared/shared'
+import {EliteApi, UserSettings} from '../../shared/shared';
 
 @IonicPage()
 @Component({
@@ -26,7 +26,8 @@ export class TeamDetailPage {
               public  navParams: NavParams,
               private eliteAPI: EliteApi,
               private alertCtrl: AlertController,
-              private toastCtrl: ToastController) {
+              private toastCtrl: ToastController,
+              private userSettings: UserSettings) {
     
   }
 
@@ -53,7 +54,7 @@ export class TeamDetailPage {
                   .value();
     this.allGames = this.games;
     this.teamStanding = _.find(this.tourneyData.standings, {'teamId': this.team.id});
-    
+    this.userSettings.isFavoriteTeam(this.team.id).then(value => this.isFollowing = value);
     console.log('[APP] games: ', this.games);
   }
 
@@ -101,7 +102,8 @@ export class TeamDetailPage {
             text: 'yes',
             handler:() => {
               this.isFollowing = false;
-              //TODO, persit data
+              
+              this.userSettings.unfavoriteTeam(this.team);
 
               let toast = this.toastCtrl.create({
                 message: 'You have unfollowed this team.',
@@ -120,7 +122,11 @@ export class TeamDetailPage {
 
     }else{
       this.isFollowing = true;
-      //TODO, persist data
+      
+      this.userSettings.favoriteTeam(
+        this.team,
+        this.tourneyData.tournament.id,
+        this.tourneyData.tournament.name);
     }
   }
 

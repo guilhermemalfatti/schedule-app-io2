@@ -4,7 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { HttpModule } from '@angular/http';
 import { MyApp } from './app.component';
-
+import { IonicStorageModule } from '@ionic/storage';
 
 import {TeamsPage, TournamentsPage, MyTeamsPage, TeamDetailPage, StandingsPage, TeamHomePage, GamePage} from '../pages/pages';
 
@@ -25,6 +25,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   imports: [
     BrowserModule,
     HttpModule,
+    IonicStorageModule.forRoot({
+      name: '__mydb-malfatti',
+         driverOrder: ['indexeddb', 'sqlite', 'websql']
+    }),
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
@@ -41,7 +45,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler}    
   ]
 })
 export class AppModule {}
