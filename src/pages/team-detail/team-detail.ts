@@ -130,4 +130,11 @@ export class TeamDetailPage {
     }
   }
 
+  refreshAll(refresher){
+    this.eliteAPI.refreshCurrentTourney().subscribe(() => {
+      refresher.complete();
+      this.ionViewDidLoad();
+    })
+
+  }
 }
