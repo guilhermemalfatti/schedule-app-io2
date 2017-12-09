@@ -75,12 +75,6 @@ export class TeamDetailPage {
 
   }
 
-  /* goHome(){
-    //this.navCtrl.push(MyTeamsPage);
-    //this.navCtrl.popToRoot();
-    this.navCtrl.parent.parent.popToRoot();
-  } */
-
   dataChamnge(){
     if(this.useDateFilter){
       this.games = _.filter(this.allGames, g => moment(g.time).isSame(this.dateFilter, 'day'));

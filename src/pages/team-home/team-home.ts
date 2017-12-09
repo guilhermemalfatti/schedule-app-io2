@@ -23,7 +23,7 @@ export class TeamHomePage {
   }
 
   goHome(){
-    //bug: the stack of "pages" will be wrong, because when you go to home page, will be wered, have a bacck botton on home page
+    //bug: the stack of "pages" will be wrong, because when you go to home page, will be weird, have a back botton on home page
     //this.navCtrl.push(MyTeamsPage);
     this.navCtrl.popToRoot();    
   }
