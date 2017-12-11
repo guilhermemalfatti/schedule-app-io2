@@ -12,11 +12,13 @@ export class UserSettings {
         let item = {team: team, tournamentId: tournamentId, tournamentName: tournamentName}
 
         this.storage.set(team.id, JSON.stringify(item));
+        console.log('[APP] user.settings - favorite team - publish event');
         this.events.publish('favorite:change');
     }
 
     unfavoriteTeam(team){
         this.storage.remove(team.id);
+        console.log('[APP] user.settings - unfavorite team - publish event');
         this.events.publish('favorite:change');
     }
 
@@ -27,10 +29,11 @@ export class UserSettings {
     getallFavorites(){
         return new Promise(resolve => {
             let results = [];
-            this.storage.forEach(data => {
+            this.storage.forEach((data, key, index) => {
                 results.push(JSON.parse(data));
-            });
-            return resolve(results);
+            }).then(() => {
+                return resolve(results);
+            });            
         });
     }
 }

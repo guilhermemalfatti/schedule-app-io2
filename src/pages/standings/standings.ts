@@ -24,14 +24,14 @@ export class StandingsPage {
     let tourneyData = this.eliteAPI.getCurrentTourney();
     this.standings = tourneyData.standings;
 
-    this.allStandings = _.chain(this.standings)
-                        .groupBy('division')
-                        .toPairs()
-                        .map(item => _.zipObject(['divisionName', 'divisionStandings'], item))
-                        .value();
-
     console.log('[APP] standings', this.standings);
-    console.log('[APP] all standings', this.allStandings);
+  }
+
+  getheader(record, recordIndex, records){
+    if (recordIndex === 0 || record.division !== records[recordIndex-1].division) {
+      return record.division;
+    }
+    return null;  
   }
 
 }

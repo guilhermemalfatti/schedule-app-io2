@@ -47,7 +47,8 @@ export class MyApp {
   }
 
   refreshFavories(){
-    this.userSetitngs.getallFavorites().then(value => this.favoritesTeams = value)
+    console.log('[APP] app.components -  favorite:change raised');
+    this.userSetitngs.getallFavorites().then(value => this.favoritesTeams = value);
   }
 
   goToTeam(favorite){
