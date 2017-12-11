@@ -13,6 +13,7 @@ export class StandingsPage {
   standings: any[];
   team: any;
   allStandings: any;
+  divisionFilter = 'division'
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
@@ -25,6 +26,16 @@ export class StandingsPage {
     this.standings = tourneyData.standings;
 
     console.log('[APP] standings', this.standings);
+    this.allStandings = tourneyData.standings;
+    this.filterDivision();
+  }
+
+  filterDivision(){
+    if(this.divisionFilter === 'all'){
+      this.standings = this.allStandings;
+    }else{
+      this.standings = _.filter(this.allStandings, s => s.division === this.team.division);
+    }
   }
 
   getheader(record, recordIndex, records){
