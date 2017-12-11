@@ -12,8 +12,6 @@ import {TeamHomePage} from '../pages';
 export class GamePage {
 
   game: any;
-  teamName1: any;
-  teamName2: any;
 
 
   constructor(public navCtrl: NavController, 
@@ -23,16 +21,25 @@ export class GamePage {
 
   ionViewDidLoad() {
     this.game = this.navParams.data;
-    this.teamName1 = this.game.team1;
-    this.teamName2 = this.game.team2;
-    console.log('[APP] gamePage - game: ' + this.game);
-    console.log(this.game);
+    this.game.gameTime = Date.parse(this.game.time);
   }
 
   teamTapped(teamId){
     let tourneydata = this.eliteAPI.getCurrentTourney();
     let team = tourneydata.teams.find(t => t.id === teamId);
     this.navCtrl.push(TeamHomePage, team);
+  }
+
+  goToDirections(){
+    //TODO
+  }
+
+  goToMap(){
+    //TODO
+  }
+
+  isWinner(score1, score2){
+    return Number(score1) > Number(score2) ? 'secondary' : '';
   }
 
 }

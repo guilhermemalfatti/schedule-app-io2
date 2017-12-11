@@ -1,3 +1,22 @@
 page-game {
+    $border-style: thin solid gray;
+    
+    
+    .top-bottom-border {
+        border-top: $border-style;
+        border-bottom: $border-style;
+    }
+    
+    .divider-col {
+        border-right: $border-style;
+    }
 
+    
+    .primary{
+        color: #488aff;
+    }
+
+    .secondary{
+        color: #32db64;
+    }
 }
