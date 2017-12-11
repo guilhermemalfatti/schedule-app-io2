@@ -42,7 +42,7 @@ export class MyApp {
       this.splashScreen.hide();
       this.refreshFavories();
 
-      this.events.subscribe('favorite:chenge', () => this.refreshFavories());
+      this.events.subscribe('favorite:change', () => this.refreshFavories());
     });
   }
 

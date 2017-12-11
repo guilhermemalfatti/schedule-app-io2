@@ -17,4 +17,11 @@ working with HTTP, and numerous Ionic 2 components including advanced scenarios.
 you'll learn about using native device features such as geolocation, the device camera, barcode scanner, accelerometer, and more. 
 By the end of this course, you'll be well prepared to start developing your own apps using the Ionic 2 framework.
 
+------------------
+Useful  commands
+ - ionic serve -c
+ - ionic cordova run android --device (build apk)
+ ionic cordova run android -lc -- -d (run on real device)
+
+
 

@@ -22,6 +22,7 @@ export class TeamsPage {
   private allteams: any;
   private allteamsDivisions; any;
   teams = [];
+  querytext: string;
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
@@ -57,6 +58,19 @@ export class TeamsPage {
     //console.log(team);
     this.navCtrl.push(TeamHomePage, team);
 
+  }
+
+  updateTeams(){
+    let queryTextLower = this.querytext.toLowerCase();
+    let filteredTeams = [];
+    _.forEach(this.allteamsDivisions, td => {
+      let teams = _.filter(td.divisionTeams, t => (<any>t).name.toLowerCase().includes(queryTextLower));
+      if(teams.length){
+        filteredTeams.push({divisionName: td.divisionName, divisionTeams: teams});
+      }
+    });
+
+    this.teams = filteredTeams;
   }
 
 }
