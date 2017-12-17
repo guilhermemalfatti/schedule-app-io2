@@ -3,10 +3,11 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { HttpModule } from '@angular/http';
+
 import { MyApp } from './app.component';
 import { IonicStorageModule } from '@ionic/storage';
 
-import {TeamsPage, TournamentsPage, MyTeamsPage, TeamDetailPage, StandingsPage, TeamHomePage, GamePage} from '../pages/pages';
+import {MapPage, TeamsPage, TournamentsPage, MyTeamsPage, TeamDetailPage, StandingsPage, TeamHomePage, GamePage} from '../pages/pages';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -20,7 +21,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     TeamsPage,
     TeamHomePage,
     StandingsPage,
-    GamePage
+    GamePage,
+    MapPage
   ],
   imports: [
     BrowserModule,
@@ -29,7 +31,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
       name: '__mydb-malfatti',
          driverOrder: ['indexeddb', 'sqlite', 'websql']
     }),
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -40,7 +42,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     TeamsPage,
     TeamHomePage,
     StandingsPage,
-    GamePage
+    GamePage,
+    MapPage
   ],
   providers: [
     StatusBar,

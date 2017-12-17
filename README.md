@@ -21,6 +21,7 @@ By the end of this course, you'll be well prepared to start developing your own 
 Useful  commands
  - ionic serve -c
  - ionic cordova run android -lc -- -d (run on real device)
+ - ionic cordova build android
 
 
 
