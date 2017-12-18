@@ -25,7 +25,7 @@ export class MapPage {
 
     this.loadMap(location);
   }
-  loadMap(location) {
+  loadMap(location, ) {
     
     let options = {
       center: new google.maps.LatLng(location.latitude, location.longitude),
@@ -33,9 +33,31 @@ export class MapPage {
       mapTypeId: google.maps.MapTypeId.ROADMAP
     }
 
-    //https://www.gajotres.net/ionic-2-integrating-google-maps/2/
+    //https://www.gajotres.net/ionic-2-integrating-google-maps/
     this.map = new google.maps.Map(document.getElementById("map_canvas"), options);
-        
+    this.showMyLocation();
   }
+
+  /*
+     * This function will create and show a marker representing your location
+     */
+    showMyLocation(){
+      
+             let marker = new google.maps.Marker({
+                 map: this.map,
+                 animation: google.maps.Animation.DROP,
+                 position: this.map.getCenter()
+             });
+      
+             let markerInfo = "<h4>You are here!</h4>";         
+      
+             let infoModal = new google.maps.InfoWindow({
+                 content: markerInfo
+             });
+      
+             google.maps.event.addListener(marker, 'click', () => {
+                 infoModal.open(this.map, marker);
+             });
+         }
 
 }
