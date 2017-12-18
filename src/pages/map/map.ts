@@ -4,6 +4,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {EliteApi} from '../../shared/shared';
 
 declare var google;
+declare var window: any;
 
 @IonicPage()
 @Component({
@@ -38,26 +39,30 @@ export class MapPage {
     this.showMyLocation();
   }
 
-  /*
+    /*
      * This function will create and show a marker representing your location
      */
     showMyLocation(){
       
-             let marker = new google.maps.Marker({
-                 map: this.map,
-                 animation: google.maps.Animation.DROP,
-                 position: this.map.getCenter()
-             });
-      
-             let markerInfo = "<h4>You are here!</h4>";         
-      
-             let infoModal = new google.maps.InfoWindow({
-                 content: markerInfo
-             });
-      
-             google.maps.event.addListener(marker, 'click', () => {
-                 infoModal.open(this.map, marker);
-             });
-         }
+      let marker = new google.maps.Marker({
+          map: this.map,
+          animation: google.maps.Animation.DROP,
+          position: this.map.getCenter()
+      });
+
+      let markerInfo = "<h4>You are here!</h4>";         
+
+      let infoModal = new google.maps.InfoWindow({
+          content: markerInfo
+      });
+
+      google.maps.event.addListener(marker, 'click', () => {
+          infoModal.open(this.map, marker);
+      });
+    }
+
+    getDirections(){
+      window.location = `geo:${this.map.lat},${this.map.lng};u=35`; 
+    }
 
 }
