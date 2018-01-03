@@ -5,12 +5,14 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpModule } from '@angular/http';
 
 import { MyApp } from './app.component';
-import { IonicStorageModule } from '@ionic/storage';
 
 import {MapPage, TeamsPage, TournamentsPage, MyTeamsPage, TeamDetailPage, StandingsPage, TeamHomePage, GamePage} from '../pages/pages';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+
+import { SqlStorage, UserSettings } from '../shared/shared';
+import { SQLite } from '@ionic-native/sqlite'
 
 @NgModule({
   declarations: [
@@ -27,10 +29,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   imports: [
     BrowserModule,
     HttpModule,
-    IonicStorageModule.forRoot({
-      name: '__mydb-malfatti',
-         driverOrder: ['indexeddb', 'sqlite', 'websql']
-    }),
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -48,7 +46,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}    
+    {provide: ErrorHandler, useClass: IonicErrorHandler},    
+    SQLite,
+    SqlStorage,
+    UserSettings  
   ]
 })
 export class AppModule {}
