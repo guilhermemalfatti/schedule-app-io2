@@ -5,6 +5,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpModule } from '@angular/http';
 
 import { MyApp } from './app.component';
+import { IonicStorageModule } from '@ionic/storage';
 
 import {MapPage, TeamsPage, TournamentsPage, MyTeamsPage, TeamDetailPage, StandingsPage, TeamHomePage, GamePage} from '../pages/pages';
 
@@ -29,6 +30,10 @@ import { SQLite } from '@ionic-native/sqlite'
   imports: [
     BrowserModule,
     HttpModule,
+    IonicStorageModule.forRoot({
+      name: '__mydb-malfatti',
+      driverOrder: ['indexeddb', 'sqlite', 'websql']
+    }),
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],

@@ -59,10 +59,10 @@ export class SqlStorage {
      */
     public initializeDatabase(){
                
-        console.log('[APP]SQLite plugin  installed.');
+        console.log('[APP] SQLite plugin  installed.');
         return this.getDB().then((db) => {
             return db.executeSql('CREATE TABLE IF NOT EXISTS kv (key text primary key, value text)', []).then(data => {
-                console.log('**after CREATE TABLE check', data);
+                console.log('[APP] **after CREATE TABLE check', data);
             });
         });
     }
